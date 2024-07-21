@@ -39,7 +39,7 @@ function Content() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentChat]);
 
-  return (currentChat && currentChat?.chats?.length > 0) || loading ? (
+  return ((currentChat && currentChat?.response) || loading) ? (
     <div className="h-[85%] pt-16 overflow-hidden overflow-y-scroll text-left">
       <Results currentChatId={currentChatId} chats={currentChat?.chats ?? []} response={currentChat?.response ?? ""} />
     </div>

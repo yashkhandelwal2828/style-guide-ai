@@ -16,7 +16,7 @@ type ChatItem = {
 function Results({
   chats,
   currentChatId,
-  response
+  response,
 }: {
   chats: ChatItem[][];
   currentChatId: string;
@@ -50,6 +50,13 @@ function Results({
   return (
     <div className="m-5 flex flex-col justify-end items-end">
       <div className="flex items-start gap-2 mt-10 flex-wrap float-left w-[75%] flex-col">
+        {!chats?.length ? (
+          <>
+            <p className="text-white mt-5 flex items-center gap-3">
+              <ThemeAvatar /> {response}
+            </p>
+          </>
+        ) : null}
         {chats.map((chat, index) => {
           if (Array.isArray(chat) && chat?.length) {
             return (
@@ -67,7 +74,13 @@ function Results({
                         {/* <CardDescription></CardDescription> */}
                         {/* </CardHeader> */}
                         <CardContent className="px-4 py-2">
-                        <a className="text-base flex items-center justify-center gap-2 underline !text-[#0462ba]" href={product_url} target="_blank">{product_name}</a>
+                          <a
+                            className="text-base flex items-center justify-center gap-2 underline !text-[#0462ba]"
+                            href={product_url}
+                            target="_blank"
+                          >
+                            {product_name}
+                          </a>
                         </CardContent>
                         {/* <CardFooter>
     <p>Card Footer</p>
